@@ -1,6 +1,6 @@
 data "google_container_engine_versions" "gke_version"{
     location       = var.region
-    version_prefix = "1.3."
+    version_prefix = "1.27."
 }
 
 resource "google_container_cluster" "primary" {
@@ -19,7 +19,7 @@ resource "google_container_node_pool" "primary_nodes" {
     location = var.region
     cluster  = google_container_cluster.primary.name
 
-    version  = data.google_container_engine_versions.gke_version.release_channel_latest_version["STABLE"]
+    version  = data.google_container_engine_versions.gke_version.latest_master_version
     node_count = var.gke_num_nodes
 
     node_config {
