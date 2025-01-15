@@ -9,6 +9,15 @@ on:
       default: 'main'
       type: string
 
+    operation:
+      description: 'Terraform operation to perform'
+      required: true
+      default: 'apply'
+      type: string
+      options:
+        - apply
+        - destroy
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -41,8 +50,13 @@ jobs:
         env: 
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Terraform Apply
-        run: terraform apply -var-file="terraform.tfvars" -auto-approve
+      - name: Terraform Apply or Destroy
+        run: |
+          if [ "${{ github.event.inputs.operation }}" == "apply" ]; then
+            terraform apply -var-file="terraform.tfvars" -auto-approve
+          elif [ "${{ github.event.inputs.operation }}" == "destroy" ]; then
+            terraform destroy -var-file="terraform.tfvars" -auto-approve
+          fi
         env:
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
