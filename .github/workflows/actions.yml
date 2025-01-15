@@ -50,8 +50,8 @@ jobs:
         env: 
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
-      - name: Terrraform Refersh
-        run: terraform referesh 
+      - name: Terrraform Refrsh
+        run: terraform refresh 
         env: 
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
