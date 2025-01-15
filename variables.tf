@@ -9,3 +9,7 @@ variable "project" {
 variable "gke_num_nodes" {
   description = "number of gke nodes"
 }
+
+variable "zone" {
+  description = "GCP Zone"
+}
