@@ -50,6 +50,11 @@ jobs:
         env: 
           GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
 
+      - name: Terrraform Refersh
+        run: terraform referesh 
+        env: 
+          GOOGLE_CREDENTIALS: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+
       - name: Terraform Apply or Destroy
         run: |
           if [ "${{ github.event.inputs.operation }}" == "apply" ]; then
