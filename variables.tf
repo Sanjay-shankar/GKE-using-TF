@@ -7,16 +7,13 @@ variable "project" {
 }
 
 variable "gke_username" {
-    default     = ""
-    description = "gke username"
+  description = "gke username"
 }
 
 variable "gke_password" {
-  default     =  ""
   description = "value"
 }
 
 variable "gke_num_nodes" {
-    default     =   ""
-    description = "number of gke nodes"
+  description = "number of gke nodes"
 }
