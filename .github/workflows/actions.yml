@@ -1,4 +1,4 @@
-name: Create GKE using IAC
+name: Create or Destroy GKE using IAC
 
 on:
  workflow_dispatch:
